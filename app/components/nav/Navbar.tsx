@@ -3,19 +3,17 @@ import Container from "../container";
 
 const NavBar = () => {
     return (
-    <div className="
-    sticcky
-    top-0
-    w-full
-    bg-black
-    z-30
-    shadow-sm
-
-    
-    "
+        <div className="
+        sticcky
+        top-0
+        w-full
+        bg-gradient-to-r from-orange-300 to-orange-400
+        z-30
+        shadow-sm
+        "
         >
             <div className="py-4 border-b-[1px]">
-                 <container>
+                <Container>
                     <div className="
                     flex
                     items-center
@@ -23,17 +21,17 @@ const NavBar = () => {
                     gap-3
                     md-gap-0
                     ">
-                        <Link href="/" className="font-bold text-2x1 text-orange-500">GUSTO</Link>
-                        <div className="hidden md:block text-orange-500">Search</div>  
-                        <div className="flex items-center gap-8 md:gap-12 text-orange-500">
-                            <div className="text-orange-500">CartCount</div>
-                            <div className="text-orange-500">UserMenu</div>
+                        <Link href="/" className="font-bold text-3xl text-black">GUSTO</Link>
+                        <div className="hidden md:block text-black text-xl">Search</div>  
+                        <div className="flex items-center gap-8 md:gap-12 text-black">
+                            <div className="text-black text-xl">CartCount</div>
+                            <div className="text-black text-xl">UserMenu</div>
                         </div>
                     </div>
-                 </container> 
+                </Container> 
             </div>
         </div> 
-        );
+    );
 };
  
 export default NavBar;

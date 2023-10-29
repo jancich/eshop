@@ -1,7 +1,6 @@
-export const truncateText = (str: string) => {
-    if(str.length <25) return
-    str;
-
-    return str.substring(0, 25) + '...';
-
-}
+export const truncateText = (text: string, maxLength: number = 50) => {
+    if (text.length <= maxLength) {
+        return text;
+    }
+    return text.slice(0, maxLength) + "...";
+};
