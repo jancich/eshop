@@ -13,7 +13,7 @@ interface Props{
 
  export const CartContextProvider = (props: Props) => {
 
-    const [cartTotalQty, setCartTotalQty] = useState(0);
+    const [cartTotalQty, setCartTotalQty] = useState(10);
 
     const value = {
         cartTotalQty
