@@ -51,23 +51,20 @@ const ProductImage: React.FC<ProductImageProps> = (
                 fill className="object-contain"
                 />
             </div>
-        })};
+        })}
         </div>
-        <div className="col-span-5 relative-square">
-            <Image 
-                fill 
-                src={cartProduct.selectedImg.image}
-                alt={cartProduct.name} 
-                className="
-                w-full
-                h-full
-                object-contain
-                max-h-[500px]
-                min-h-[300px]
-                sm:min-h-[400px]
-                "/>
-         </div>
-    </div> );
+        <div className="col-span-5 relative
+        aspect-square">
+            <Image fill src={cartProduct.selectedImg.image} alt={cartProduct.name} className="w-full
+            h-full
+            object-contain
+            max-h-[500px]
+            min-h-[300px]
+            sm:min-h-[400px]
+            "/>
+        </div>
+    </div> 
+    );
 };
  
 export default ProductImage;
