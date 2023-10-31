@@ -23,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
 }) => {
     return ( <button
+    onClick={onClick}
     disabled={disababled}
     className={`
     disabled:oppacity-70
