@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "../container";
+import CartCount from "./CartCount";
 
 const NavBar = () => {
     return (
@@ -24,7 +25,7 @@ const NavBar = () => {
                         <Link href="/" className="font-bold text-3xl text-black">GUSTO</Link>
                         <div className="hidden md:block text-black text-xl">Search</div>  
                         <div className="flex items-center gap-8 md:gap-12 text-black">
-                            <div className="text-black text-xl">CartCount</div>
+                            <CartCount/>
                             <div className="text-black text-xl">UserMenu</div>
                         </div>
                     </div>
