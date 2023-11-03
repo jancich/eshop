@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Container from "../container";
 import CartCount from "./CartCount";
+import Image from "next/image";
+import UserMenu from "./UserMenu";
 
 const NavBar = () => {
     return (
@@ -22,11 +24,19 @@ const NavBar = () => {
                     gap-3
                     md-gap-0
                     ">
-                        <Link href="/" className="font-bold text-3xl text-black">GUSTO</Link>
+                        <Link href="/" className="font-bold text-3xl text-black">
+                        <Image
+                                src="/LOGO GUSTO.png"
+                                alt="Banner"
+                                width={200}
+                                height={50}
+                            />
+
+                        </Link>
                         <div className="hidden md:block text-black text-xl">Search</div>  
                         <div className="flex items-center gap-8 md:gap-12 text-black">
                             <CartCount/>
-                            <div className="text-black text-xl">UserMenu</div>
+                            <UserMenu/>
                         </div>
                     </div>
                 </Container> 

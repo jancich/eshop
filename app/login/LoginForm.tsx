@@ -7,6 +7,9 @@ import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import Button from "../components/Button";
 import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
 
@@ -16,11 +19,28 @@ const LoginForm = () => {
             email:"",
             password: "",
         }
-    })
+    });
+
+    const router = useRouter()
 
     const onSubmit : SubmitHandler<FieldValues> = (data)=> {
         setIsLoading(true)
-        console.log(data)
+        signIn('credentials',{
+            ...data,
+            redirect: false
+        }).then((callback) => {
+            setIsLoading(false)
+
+            if(callback?.ok){
+                router.push("/cart")
+                router.refresh()
+                toast.success("Logged in")
+            }
+
+            if(callback?.error){
+                toast.error(callback.error)
+            } 
+        })
 
     }
     return ( 
@@ -34,16 +54,16 @@ const LoginForm = () => {
         />
         <hr className="bg-slate-300 w-full h-px"/>
         <Input 
-        id="E-mail"
-        label="E-mail"
+        id="email"
+        label="email"
         disabled={isLoading}
         register={register}
         errors={errors}
         required
         />
         <Input 
-        id="Password"
-        label="Password"
+        id="password"
+        label="password"
         disabled={isLoading}
         register={register}
         errors={errors}
