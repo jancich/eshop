@@ -5,7 +5,7 @@ import Navbar from './components/nav/Navbar';
 import Footer from './components/Footer/Footer';
 import CartProvider from '@/Providers/CartProvider';
 import { Toaster } from 'react-hot-toast';
-import { getCurrentUser } from '@/actions/getCurrentUser';
+
 
 const Poppins = PoppinsFont({ subsets: ['latin'], weight:['400', '700'] });
 
@@ -20,9 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-const currentUser = await getCurrentUser()
 
-console.log("user<<<", currentUser)
 
   return (
     <html lang="en">

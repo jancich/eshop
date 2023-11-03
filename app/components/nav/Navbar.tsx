@@ -3,8 +3,13 @@ import Container from "../container";
 import CartCount from "./CartCount";
 import Image from "next/image";
 import UserMenu from "./UserMenu";
+import { getCurrentUser } from '@/actions/getCurrentUser';
 
-const NavBar = () => {
+
+const NavBar = async () => {
+
+const currentUser = await getCurrentUser()
+
     return (
         <div className="
         sticcky
@@ -36,7 +41,7 @@ const NavBar = () => {
                         <div className="hidden md:block text-black text-xl">Search</div>  
                         <div className="flex items-center gap-8 md:gap-12 text-black">
                             <CartCount/>
-                            <UserMenu/>
+                            <UserMenu currentUser = {currentUser}/>
                         </div>
                     </div>
                 </Container> 

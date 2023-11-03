@@ -7,6 +7,13 @@ import Link from 'next/link';
 import MenuItem from './MenuItems';
 import { signOut } from 'next-auth/react';
 import BackDrop from './BackDrop';
+import { User } from 'next-auth';
+import { SafeUser } from '@/types';
+
+interface UserMenuProps{
+  currentUser: SafeUser | null;
+}
+
 
 const useToggleOpen = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +23,7 @@ const useToggleOpen = () => {
   return [isOpen, toggleOpen];
 };
 
-const UserMenu = () => {
+const UserMenu:React.FC <UserMenuProps> = ({currentUser}) => {
   const [isOpen, toggleOpen] = useToggleOpen();
 
   return (
@@ -24,27 +31,26 @@ const UserMenu = () => {
         <div className="relative z-30">
         <div
             onClick={toggleOpen}
-            className="p-2 border-[1px] border-slate-700 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-slate-700"
-        >
+            className="p-2 border-[1px] border-slate-700 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-slate-700">
             <Avatar />
             <AiFillCaretDown />
         </div>
         {isOpen && (
             <div className="absolute rounded-md shadow-md w-[170px] bg-white overflow-hidden right-0 top-12 text-sm flex flex-col cursor-pointer">
-            <div>
+              {currentUser ? (<div>
                 <Link href="/orders">
                 <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
                 </Link>
                 <Link href="/admin">
                 <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
                 </Link>
+                <hr />
                 <MenuItem onClick={() => {
                     toggleOpen();
                     signOut();
                 }}>
                 Log out</MenuItem>
-            </div>
-            <div>
+            </div>) : (<div>
             <Link href="/login">
                 <MenuItem onClick={toggleOpen}>Log in</MenuItem>
                 </Link>
@@ -52,6 +58,7 @@ const UserMenu = () => {
                 <MenuItem onClick={toggleOpen}>Register</MenuItem>
                 </Link>
              </div>
+             )}
             </div>
         )}
         </div>
